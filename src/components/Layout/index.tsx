@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useHistory } from 'react-router-dom';
@@ -255,7 +253,8 @@ const Layout: React.FC = ({ children }) => {
         </NavbarItem>
         <NavbarSubItems visible={selected === 'config'}>
           <NavbarItem disabled>Cadastrar</NavbarItem>
-          <NavbarItem onClick={() => link('/process')}>Listar</NavbarItem>
+          <NavbarItem disabled>Listar</NavbarItem>
+          <NavbarItem onClick={() => link('/qualityControl')}>Controle de Qualidade</NavbarItem>
           <NavbarItem onClick={() => link('/nonCompliance')}>Não conformidades</NavbarItem>
         </NavbarSubItems>
 

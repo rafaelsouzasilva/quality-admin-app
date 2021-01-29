@@ -5,15 +5,14 @@ import Route from './PrivateRoute';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 
-//import * as Area from '../pages/Area';
-//<Route path="/area/create" component={Area.Form} />
-//<Route path="/area/edit/:id" component={Area.Form} />
-//<Route path="/area/:id" component={Area.Details} />
-//<Route path="/area" exact component={Area.List} />
+import * as QualityControl from '../pages/QualityControl';
 
 const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
+      <Route path="/qualityControl/:id" component={QualityControl.Details} />
+      <Route path="/qualityControl" exact component={QualityControl.List} />
+
       <RouteDom path="/login" component={Login} />
       <Route path="/" exact component={Home} />
 
