@@ -82,7 +82,8 @@ const Login: React.FC = () => {
       <Formik initialValues={data} onSubmit={handleSubmit}>
         <Form>
           <LogoWrapper>
-            <img src={logo} alt="Gestão Escolar" />
+            <img src={logo} alt="Gestão de Qualidade" />
+            <p>Gestão de Qualidade</p>
           </LogoWrapper>
 
           <FieldGroup>
