@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Layout from '../../../components/Layout';
 
 import { QualityControlInterface as QualityControl, list } from '../../../services/qualityControl';

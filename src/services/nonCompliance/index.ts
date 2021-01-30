@@ -11,7 +11,7 @@ export interface NonComplianceInterface {
   enabled: boolean;
   violatedRuleCode: string;
   violatedRuleDescription: string;
-  qualityControl: QualityControlInterface;
+  qualityControl: QualityControlInterface | { id: string; };
 }
 
 const PATH = '/nonCompliance'

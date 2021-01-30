@@ -32,7 +32,7 @@ const List: FC = () => {
 
   return (
     <Layout>
-      <h2>Listagem de Ano</h2>
+      <h2>Listagem - Não Conformidades</h2>
 
       <Link className="create" to="/nonCompliance/create">
         Cadastrar

@@ -197,11 +197,11 @@ const NavbarItem = styled.div<NavbarItemProps>`
     `}
 `;
 
-interface NavbarSubItems {
+interface NavbarSubItemsInterface {
   visible?: boolean;
 }
 
-const NavbarSubItems = styled.div<NavbarSubItems>`
+const NavbarSubItems = styled.div<NavbarSubItemsInterface>`
   padding-left: 20px;
   display: none;
 

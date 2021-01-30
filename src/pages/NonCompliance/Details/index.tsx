@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { NonComplianceInterface as NonCompliance, find } from '../../../services/nonCompliance';
+import { QualityControlInterface as QualityControl, find as findQuality } from '../../../services/qualityControl';
 import Layout from '../../../components/Layout';
 
 const Wrapper = styled.div`
@@ -12,17 +13,21 @@ const Wrapper = styled.div`
 
   b {
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: 700;
   }
 `;
 
 const Button = styled(Link)`
   text-decoration: none;
   cursor: pointer;
-  color: #999;
+  color: #333;
+  border: 1px solid #333;
+  padding: 5px;
+  border-radius: 5px;
 
   :hover {
-    color: #333;
+    color: black;
+    border-color: black;
   }
 `;
 
@@ -31,10 +36,16 @@ const Details: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams<{id : string}>();
   const [data, setData] = useState<NonCompliance>();
+  const [quality, setQuality] = useState<QualityControl>();
 
   useEffect(() => {
     find(id).then(nonCompliance => {
       setData(nonCompliance);
+      findQuality(nonCompliance.qualityControl.id)
+        .then(q => setQuality(q))
+        .catch(err => {
+          console.log('error when loading quality', err);
+        })
       setLoading(false);
     }).catch(err => {
       console.log('error when loading nonCompliance', err);
@@ -55,6 +66,29 @@ const Details: React.FC = () => {
               </p>
               <p>
                 <b>Titulo:</b> <br /> {data?.title}
+              </p>
+              <p>
+                <b>Descrição:</b> <br /> {data?.description}
+              </p>
+              <p>
+                <b>Data:</b> <br /> {data?.date.toString().split('-').reverse().join("/")}
+              </p>
+              <p>
+                <b>Origem:</b> <br /> {data?.origin}
+              </p>
+              <p>
+                <b>Ativa?</b> <br /> {data?.enabled}
+              </p>
+              <p>
+                <b>Norma de qualidade violada (código):</b> <br /> {data?.violatedRuleCode}
+              </p>
+              <p>
+                <b>Norma de qualidade violada (descrição):</b> <br /> {data?.violatedRuleDescription}
+              </p>
+
+              <p>
+                <b>Controle de Qualidade:</b> <Link to={`/qualityControl/${quality?.id}`}>ver detalhes</Link>
+                <br /> {quality?.parametrization.description}
               </p>
 
               <Button to='/nonCompliance'>Voltar</Button>

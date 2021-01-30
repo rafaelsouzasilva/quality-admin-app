@@ -1,5 +1,7 @@
 import { api, headers } from '../api';
 
+import { NonComplianceInterface } from '../nonCompliance';
+
 interface ProcessInterface {
   id: string;
   name: string;
@@ -40,8 +42,20 @@ const find = async (id: string): Promise<QualityControlInterface> => {
 
     return response.data;
   } catch (err) {
+    console.log(err)
     throw new Error('no qualityControl found');
   }
 }
 
-export { list, find }
+const findAllNonCompliance = async (id: string): Promise<NonComplianceInterface[]> => {
+  try {
+    const response = await api.get<NonComplianceInterface[]>(`${PATH}/${id}/nonCompliance`, { headers });
+
+    return response.data;
+  } catch (err) {
+    console.log(err)
+    throw new Error('no qualityControl found');
+  }
+}
+
+export { list, find, findAllNonCompliance }
