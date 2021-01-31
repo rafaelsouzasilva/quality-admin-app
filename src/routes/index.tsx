@@ -8,6 +8,8 @@ import Home from '../pages/Home';
 import * as QualityControl from '../pages/QualityControl';
 import * as NonCompliance from '../pages/NonCompliance';
 
+import Poc from '../pages/Poc';
+
 const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
@@ -19,7 +21,9 @@ const Routes: React.FC = () => (
       <Route path="/nonCompliance/edit/:id" component={NonCompliance.Form} />
       <Route path="/nonCompliance/:id" component={NonCompliance.Details} />
       <Route path="/nonCompliance" exact component={NonCompliance.List} />
-      
+
+      <RouteDom path="/poc" component={Poc} />
+
       <RouteDom path="/login" component={Login} />
       <Route path="/" exact component={Home} />
 
